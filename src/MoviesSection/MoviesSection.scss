@@ -1,0 +1,10 @@
+@import "../styles/variables";
+
+.movies-section {
+    padding: $global-section-padding;
+    margin-bottom: 30px;
+
+    h2 {
+        margin-bottom: 15px;
+    }
+}

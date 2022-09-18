@@ -1,0 +1,8 @@
+@import "../styles/variables";
+
+.movie-list {
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: $global-section-padding;
+}
