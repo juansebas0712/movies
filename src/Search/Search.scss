@@ -1,11 +1,18 @@
 @import "../styles/variables";
 
-#search {
-    padding: 12px 22px;
-    border: 2px solid $main_color;
+.search-wrapper {
+    padding: 1px;
+    background: $linear-gradient;
     border-radius: 24px;
-    background: none;
-    color: $white;
-    font-family: $montserrat;
-    font-size: 16px;
+
+    #search {
+        padding: 12px 22px;
+        border: 2px solid $main_color;
+        border-radius: 24px;
+        background: none;
+        color: $white;
+        font-family: $montserrat;
+        font-size: 16px;
+        background: $black;
+    }
 }

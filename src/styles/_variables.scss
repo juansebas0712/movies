@@ -1,6 +1,7 @@
 $black: #000;
 $white: #fff;
-$main_color: purple;
+$main_color: #019567;
+$linear-gradient: linear-gradient(to right, $main_color 0%, lighten($main_color, 15%) 100%);
 
 $montserrat: 'Montserrat', sans-serif;
 

@@ -1,10 +1,14 @@
 import React from "react";
 import "./Logo.scss";
+import {ReactComponent as LogoImage } from "./Logo.svg";
 
 function Logo() {
     return (
         <>
-            Logo text
+            <LogoImage />
+            <span>
+                React Movies
+            </span>
         </>
     );
 }

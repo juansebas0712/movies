@@ -3,7 +3,9 @@ import "./Search.scss";
 
 function Search() {
     return (
-        <input type="text" id="search" />
+        <div className="search-wrapper">
+            <input type="text" id="search" placeholder="Search..." />
+        </div>
     );
 }
 

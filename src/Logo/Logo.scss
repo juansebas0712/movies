@@ -1,0 +1,18 @@
+@import "../styles/variables";
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    svg {
+        fill: lighten($main_color, 15%);
+        width: 55px;
+        height: 45px;
+        margin-right: 5px;
+    }
+
+    span {
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,31 @@
+@import "../styles/variables";
+
+.movie-genres {
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+        display: block;
+        padding: 3px;
+        text-align: center;
+        text-decoration: none;
+        color: $white;
+        background: $linear-gradient;
+        border-radius: $border-radius-amount;
+        width: 13%;
+        margin: .6%;
+
+        .wrapper {
+            background: $black;
+            padding: 30px 20px;
+            border-radius: $border-radius-amount;
+        }
+
+        //background: linear-gradient(to bottom, transparent 0%, black 100%);
+
+        @media (max-width: 1366px) {
+            width: 19%;
+            margin: .5%;
+        }
+    }
+}

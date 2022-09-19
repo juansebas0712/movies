@@ -13,7 +13,6 @@ function MovieList(props) {
             .then(response => setMovies(response.data.results));
     }, []);
 
-    console.log(movies);
     if (!movies) return "No post!";
 
     return (
