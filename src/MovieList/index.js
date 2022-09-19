@@ -5,8 +5,17 @@ import "./MovieList.scss";
 
 function MovieList(props) {
     const {apiCall} = React.useContext(MovieContext);
-
     const [movies, setMovies] = React.useState(null);
+
+    let imageObserver = new IntersectionObserver(card => {
+        card.forEach(image => {
+        
+          if (image.isIntersecting) {
+                let source = image.target.getAttribute('data-image');
+                image.target.style.backgroundImage = `url(${source})`;
+            }
+        });
+    });
 
     React.useEffect(() => {
         apiCall(props.endPoint)
@@ -18,7 +27,7 @@ function MovieList(props) {
     return (
         <>
             <div className="movie-list">
-                {movies.map(movie => (<MovieCard key={movie.id} movie={movie} />))}
+                {movies.map(movie => (<MovieCard key={movie.id} movie={movie} observer={imageObserver} />))}
             </div>
         </>
     );

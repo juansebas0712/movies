@@ -3,12 +3,24 @@
 nav {
     display: flex;
     color: $white;
-    margin-right: 30px;
+    width: 100%;
 
-    a {
+    a, span {
         display: block;
         text-decoration: none;
-        margin: 0 12px;
+        padding: 5px 12px;
         color: $white;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 700;
+        opacity: .7;
+    }
+
+    a:hover {
+        opacity: 1;
+    }
+
+    span {
+        padding-left: 0;
     }
 }

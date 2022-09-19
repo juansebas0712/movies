@@ -4,6 +4,7 @@
     padding: 1px;
     background: $linear-gradient;
     border-radius: 24px;
+    position: relative;
 
     #search {
         padding: 12px 22px;
@@ -14,5 +15,21 @@
         font-family: $montserrat;
         font-size: 16px;
         background: $black;
+        width: 100%;
+    }
+
+    button[type="submit"] {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        border-radius: 200px;
+        background: $linear-gradient;
+        width: 39px;
+        height: 37px;
+
+        svg {
+            fill: $white;
+            width: 20px;
+        }
     }
 }

@@ -14,6 +14,7 @@ function App() {
       <Header />
       <MovieProvider>
         <MoviesSection sectionTitle={'Trending Movies'} endPoint={'/trending/movie/week'} />
+        <MoviesSection sectionTitle={'Lastest Movies'} endPoint={'/discover/movie/?primary_release_year=2022-09-19'} />
         <MovieGenres sectionTitle={'Genres'} />
       </MovieProvider>
     </>
