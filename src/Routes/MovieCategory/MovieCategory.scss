@@ -1,0 +1,41 @@
+@import "../../styles/variables";
+
+.movies-category {
+    text-align: center;
+
+    .section-title {
+        text-transform: uppercase;
+        margin-bottom: 25px;
+    }
+
+    .movieCard {
+        margin-bottom: 20px;
+
+        @media (max-width: $phone) {
+            width: 46%;
+            margin: 2%;
+            height: 245px;
+        }
+
+        &:hover {
+            transform: scale(1.3);
+            width: 200px;
+
+            @media (max-width: $phone) {
+                transform: scale(1);
+                width: 46%;
+            }
+
+            .movie-content {
+                
+                p {
+                    font-size: 10px;
+
+                    @media (max-width: $phone) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

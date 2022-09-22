@@ -21,11 +21,17 @@
             border-radius: $border-radius-amount;
         }
 
-        //background: linear-gradient(to bottom, transparent 0%, black 100%);
-
-        @media (max-width: 1366px) {
+        @media (max-width: $laptop) {
             width: 19%;
             margin: .5%;
+        }
+
+        @media (max-width: $tablet) {
+            width: 24%;
+        }
+
+        @media (max-width: $phone) {
+            width: 49%;
         }
     }
 }

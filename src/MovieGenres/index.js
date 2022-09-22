@@ -1,5 +1,6 @@
 import React from "react";
-import { MovieContext } from "../MovieContext";
+import { MovieContext, prettyUrl } from "../MovieContext";
+import { Link } from "react-router-dom";
 import "./MovieGenres.scss";
 
 function MovieGenres(props) {
@@ -13,7 +14,6 @@ function MovieGenres(props) {
 
     return (
         <>
-        {console.log(genres)}
         <section className="movies-section">
             {!genres && 'Cargando...'}
 
@@ -21,11 +21,18 @@ function MovieGenres(props) {
 
             <div className="movie-genres">
                 {genres && genres.map(genre => (
-                    <a key={genre.id} href="#">
-                        <div className="wrapper">
-                            {genre.name}
-                        </div>
-                    </a>
+                    <Link key={genre.id} to={`movie-category/${prettyUrl(genre.name)}`} state={
+                        {
+                            name: genre.name,
+                            id: genre.id
+                        }
+                        } >
+                        
+                            <div className="wrapper">
+                                {genre.name}
+                            </div>
+                        
+                    </Link>
                 ))}
             </div>
         </section>

@@ -1,0 +1,125 @@
+@import "../styles/variables";
+
+.slider {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+
+
+    .slide {
+        width: 54%;
+        border-radius: $border-radius-amount;
+        padding: 0 0 3px 3px;
+        background: $linear-gradient;
+        display: inline-block;
+        margin-right: 20px;
+
+        @media (max-width: $laptop) {
+            width: 70%;
+        }
+
+        @media (max-width: $tablet) {
+            width: 100%;
+        }
+
+        .wrapper {
+            position: relative;
+            padding: 60px;
+            overflow: hidden;
+            border-radius: $border-radius-amount;
+            background: $black;
+            white-space: pre-wrap;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            @media (max-width: $tablet) {
+                padding: 35px;
+            }
+
+            @media (max-width: $laptop) {
+                min-height: 280px;
+            }
+
+            @media (max-width: $phone) {
+                padding: 30px;
+            }
+        }
+
+        .image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            max-width: 40%;
+            z-index: 1;
+
+            @media (max-width: $phone) {
+                max-width: 55%;
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            .overlay {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 60%;
+                height: 100%;
+                z-index: 2;
+                background: linear-gradient(to left, transparent 0%, black 100%);
+            }
+        }
+
+        h3 {
+            text-transform: uppercase;
+            position: relative;
+            z-index: 3;
+            color: darken($white, 30%);
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+        }
+    
+        h2 {
+            text-transform: uppercase;
+            font-size: 45px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 3;
+            width: 60%;
+            line-height: 1;
+
+            @media (max-width: $laptop) {
+                width: 66%;
+            }
+
+            @media (max-width: $phone) {
+                width: 100%;
+                font-size: 28px;
+            }
+        }
+    
+        p {
+            width: 50%;
+            position: relative;
+            z-index: 3;
+            width: 60%;
+
+            @media (max-width: $phone) {
+                display: none;
+            }
+        }
+
+        .bottom {
+
+            .cta {
+                position: relative;
+                z-index: 3;
+            }
+        }
+    }
+
+}

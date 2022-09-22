@@ -1,9 +1,17 @@
+// Colors.
 $black: #000;
 $white: #fff;
 $main_color: #019567;
 $linear-gradient: linear-gradient(to right, $main_color 0%, lighten($main_color, 15%) 100%);
 
+// Fonts.
 $montserrat: 'Montserrat', sans-serif;
 
+// MISC.
 $border-radius-amount: 8px;
 $global-section-padding: 12px 18px;
+
+// Breakpoints
+$laptop: 1366px;
+$tablet: 820px;
+$phone: 480px;

@@ -15,6 +15,10 @@ const callConfig = axios.create({
     }
 });
 
+function prettyUrl (str) {
+    return str.toLowerCase().replace(/[^A-Z0-9]/ig, "-");
+}
+
 function MovieProvider(props) {
 
     const apiCall = (endpoint) => {
@@ -31,38 +35,4 @@ function MovieProvider(props) {
     );
 }
 
-export {MovieContext, MovieProvider};
-
-
-
-
-// import React from "react";
-// import { useLocalStorage } from "./useLocalStorage";
-
-// const TodoContext = React.createContext();
-
-// function TodoProvider(props) {
-
-
-    
-//     return (
-//         <TodoContext.Provider value={{
-//             loading,
-//             error,
-//             totalTodos,
-//             completedTodos,
-//             searchValue,
-//             setSearchValue,
-//             searchedTodos,
-//             completeTodo,
-//             deleteTodo,
-//             addTodo,
-//             openModal,
-//             setOpenModal,
-//         }}>
-//             {props.children}
-//         </TodoContext.Provider>
-//     );
-// }
-
-// export {TodoContext, TodoProvider};
+export {MovieContext, MovieProvider, callConfig, prettyUrl};

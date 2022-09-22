@@ -1,0 +1,44 @@
+@import "../styles/variables";
+
+.cta {
+    display: inline-block;
+    background: $linear-gradient;
+    padding: 3px;
+    border-radius: 200px;
+    text-decoration: none;
+    margin: 15px 0;
+
+    &__wrapper {
+        padding: 12px 22px;
+        display: flex;
+        align-items: center;
+        background: $black;
+        border-radius: 200px;
+
+        .text {
+            color: $white;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .icon {
+            background: $linear-gradient;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-radius: 200px;
+            padding: 5px;
+            margin-left: 15px;
+            margin-right: -8px;
+
+            svg {
+                fill: $white
+            }
+        }
+    }
+
+    &:hover {
+
+    }
+}

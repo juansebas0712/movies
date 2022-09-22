@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
+import { prettyUrl } from "../MovieContext";
 import "./MovieCard.scss";
 
 function MovieCard(props) {
@@ -8,21 +10,27 @@ function MovieCard(props) {
 
     React.useEffect(() => {
         props.observer.observe(card.current);
-        //console.log(card)
     }, [])
-
-    //console.log(props);
-    //backgroundImage: 'url(' + poster + ')'
     
     return (
         <>
             <div className="movieCard" data-image={poster} ref={card}>
-                <div className="fade"></div>
-                <div className="movie-content">
-                    <h3>{original_title} - {vote_average.toFixed(1)}</h3>
-                    <p>{overview}</p>
-                    <p>{release_date}</p>
-                </div>
+                <Link to={`/movie/${prettyUrl(original_title)}`} state={{
+                        id: id,
+                        name: original_title
+                    }}>
+                    <div className="fade"></div>
+                    <div className="movie-content">
+                        <h3>{original_title} - {vote_average.toFixed(1)}</h3>
+                        <p>
+                            {
+                                overview.length > 200 
+                                    ? overview.substring(0, 200) + '...'
+                                    : overview
+                            }
+                        </p>
+                    </div>
+                </Link>
             </div>
         </>
     );
