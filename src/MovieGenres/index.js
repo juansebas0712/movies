@@ -1,14 +1,13 @@
 import React from "react";
-import { MovieContext, prettyUrl } from "../MovieContext";
+import { api, prettyUrl } from "../MovieContext";
 import { Link } from "react-router-dom";
 import "./MovieGenres.scss";
 
 function MovieGenres(props) {
-    const {apiCall} = React.useContext(MovieContext);
     const [genres, SetGenres] = React.useState(null);
 
     React.useEffect(() => {
-        apiCall('/genre/movie/list')
+        api('/genre/movie/list')
             .then(call => SetGenres(call.data.genres));
     }, [])
 

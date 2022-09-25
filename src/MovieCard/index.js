@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import { prettyUrl } from "../MovieContext";
 import "./MovieCard.scss";
 
-function MovieCard(props) {
-    const {poster_path, original_title, overview, vote_average, release_date, id} = props.movie;
+function MovieCard({movie, observer, lastElement}) {
+    const {poster_path, original_title, overview, vote_average, id} = movie;
     const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
     const card = useRef(null);
 
     React.useEffect(() => {
-        props.observer.observe(card.current);
+        observer.observe(card.current);
     }, [])
     
     return (
         <>
-            <div className="movieCard" data-image={poster} ref={card}>
+            <div className="movieCard" data-image={poster} ref={card} data-last-element={lastElement}>
                 <Link to={`/movie/${prettyUrl(original_title)}`} state={{
                         id: id,
                         name: original_title

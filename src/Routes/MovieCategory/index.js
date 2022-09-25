@@ -1,32 +1,47 @@
 import React from "react";
-import { useParams  } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { callConfig } from "../../MovieContext";
+import { api } from "../../MovieContext";
 import { MovieCard } from "../../MovieCard";
 import { Header } from "../../Header";
+import { Loading } from "../../Loading";
 
 import "./MovieCategory.scss";
 
 function MovieCategory() {
     const location = useLocation();
-    const [movies, setMovies] = React.useState(null);
+    const [movies, setMovies] = React.useState([]);
+    const [pageNumber, setPageNum] = React.useState(1);
+    const [loading, setLoading] = React.useState(false);
 
-    let imageObserver = new IntersectionObserver(card => {
-        card.forEach(image => {
+    let observer = new IntersectionObserver(el => {
+        el.forEach(card => {
         
-          if (image.isIntersecting) {
-                let source = image.target.getAttribute('data-image');
-                image.target.style.backgroundImage = `url(${source})`;
+            if (card.isIntersecting) {
+                const source = card.target.getAttribute('data-image');
+                card.target.style.backgroundImage = `url(${source})`;
+
+                if ( card.target.dataset.lastElement === 'true' ) {
+                    setPageNum(prev => prev + 1);
+                    setLoading(true);
+                }
             }
         });
     });
 
     React.useEffect(() => {
-        callConfig(`/discover/movie?with_genres=${location.state.id}`)
+        api('/discover/movie', {
+            params: {
+                with_genres: location.state.id,
+                page: pageNumber
+            }
+        })
             .then(res => {
-                setMovies(res.data.results);
+                setLoading(false);
+                setMovies(loadedMovies => {
+                    return [...loadedMovies, ...res.data.results]
+                });
             })
-    }, []);
+    }, [pageNumber]);
 
     return (
         <>
@@ -34,9 +49,14 @@ function MovieCategory() {
             <section className="movies-section movies-category">
                 
                 <h2 className="section-title">Category: {location.state.name}</h2>
-                {movies && movies.map(movie => (
-                    <MovieCard key={movie.id} movie={movie} observer={imageObserver} />
-                ))}
+
+                {movies && movies.map( (movie, i) => {
+                    const lastElement = movies.length === i + 1;
+
+                    return <MovieCard key={movie.id} movie={movie} observer={observer} lastElement={lastElement} />
+                })}
+
+                {loading && <Loading/>}
                 
             </section>
         </>

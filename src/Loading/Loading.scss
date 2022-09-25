@@ -1,0 +1,9 @@
+@import "../styles/variables";
+
+.loading {
+    text-align: center;
+    color: $white;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px;
+}

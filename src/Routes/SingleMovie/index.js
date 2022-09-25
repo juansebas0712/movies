@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../../Header";
-import { callConfig, prettyUrl } from "../../MovieContext";
+import { api, prettyUrl } from "../../MovieContext";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ function SingleMovie() {
 
     React.useEffect(() => {
         console.log(movieParams);
-        callConfig(`/movie/${movieParams.state.id}`)
+        api(`/movie/${movieParams.state.id}`)
             .then(res => {
                 setMovie(res.data);
             })

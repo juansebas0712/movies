@@ -1,16 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import { MovieContext } from "../MovieContext";
 import { CallToAction } from "../CallToAction";
 import { prettyUrl } from "../MovieContext";
+import { api } from "../MovieContext";
 import "./MovieSlider.scss";
 
 function MovieSlider(props) {
-    const {apiCall} = React.useContext(MovieContext);
     const [movies, setMovies] = React.useState(null);
 
     React.useEffect(() => {
-        apiCall(props.endPoint)
+        api(props.endPoint)
             .then(res => {
                 setMovies(res.data.results);
             })
