@@ -15,3 +15,28 @@ $global-section-padding: 12px 18px;
 $laptop: 1366px;
 $tablet: 820px;
 $phone: 480px;
+
+@mixin scrollBar {
+    @media (min-width: $phone) {
+        &::-webkit-scrollbar {
+            height: 8px;
+            border-radius: $border-radius-amount;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: darken($white, 90%);
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: darken($white, 70%);
+            border-radius: $border-radius-amount;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: $main_color;
+        }
+    }
+}

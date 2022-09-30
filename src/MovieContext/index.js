@@ -12,8 +12,17 @@ const api = axios.create({
     }
 });
 
+const todayDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+
+    return `${yyyy}-${mm}-${dd}`;
+};
+
 function prettyUrl (str) {
     return str.toLowerCase().replace(/[^A-Z0-9]/ig, "-");
 }
 
-export { api, prettyUrl};
+export { api, prettyUrl, todayDate};

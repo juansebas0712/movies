@@ -5,6 +5,7 @@
     overflow-x: scroll;
     white-space: nowrap;
 
+    @include scrollBar;
 
     .slide {
         width: 54%;
@@ -94,6 +95,7 @@
 
             @media (max-width: $laptop) {
                 width: 66%;
+                min-height: 90px;
             }
 
             @media (max-width: $phone) {
@@ -103,13 +105,16 @@
         }
     
         p {
-            width: 50%;
             position: relative;
             z-index: 3;
             width: 60%;
 
             @media (max-width: $phone) {
                 display: none;
+            }
+
+            @media (max-width: $laptop) {
+                min-height: 116px;
             }
         }
 

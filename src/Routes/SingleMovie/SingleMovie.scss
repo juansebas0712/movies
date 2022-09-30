@@ -12,6 +12,7 @@
         .left {
             margin-right: 50px;
             position: relative;
+            min-width: 500px;
 
             img {
                 border-radius: $border-radius-amount;
@@ -20,10 +21,12 @@
             @media (max-width: $tablet) {
                 margin-right: 30px;
                 width: 30%;
+                min-width: 30%;
             }
 
             @media (max-width: $phone) {
                 width: 100%;
+                min-width: auto;
 
                 &::after {
                     content: '';

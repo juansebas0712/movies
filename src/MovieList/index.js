@@ -1,5 +1,5 @@
 import React from "react";
-import { api } from "../MovieContext";
+import { api, todayDate } from "../MovieContext";
 import { MovieCard } from "../MovieCard";
 import "./MovieList.scss";
 
@@ -23,24 +23,12 @@ function MovieList(props) {
         });
     });
 
-    // const lastElementRef = React.useCallback( (node) => {
-    //     console.log(node);
-    //     //     if (isLoading) return;
-    //     //     if (observer.current) observer.current.disconnect();
-    //     //     observer.current = new IntersectionObserver((entries) => {
-    //     //         if (entries[0].isIntersecting && hasMore) {
-    //     //         setPageNum((prev) => prev + 1);
-    //     //         }
-    //     //     });
-    //     //     if (node) observer.current.observe(node);
-    //     // },
-    //     // [loading, hasMore]
-    // });
-
     React.useEffect(() => {
         api(props.endPoint, {
             params: {
-                page: pageNumber
+                "page": pageNumber,
+                "release_date.lte": todayDate(),
+                "include_video": true
             }
         })
             .then(response => setMovies((loadedMovies) => [...loadedMovies, ...response.data.results] ));

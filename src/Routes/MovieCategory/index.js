@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { api } from "../../MovieContext";
+import { api, prettyUrl } from "../../MovieContext";
 import { MovieCard } from "../../MovieCard";
 import { Header } from "../../Header";
 import { Loading } from "../../Loading";
@@ -8,7 +8,7 @@ import { Loading } from "../../Loading";
 import "./MovieCategory.scss";
 
 function MovieCategory() {
-    const location = useLocation();
+    let location = useLocation();
     const [movies, setMovies] = React.useState([]);
     const [pageNumber, setPageNum] = React.useState(1);
     const [loading, setLoading] = React.useState(false);
@@ -41,7 +41,12 @@ function MovieCategory() {
                     return [...loadedMovies, ...res.data.results]
                 });
             })
-    }, [pageNumber]);
+    }, [pageNumber, location]);
+
+    React.useEffect(() => {
+        setMovies([]);
+        setPageNum(1)
+    }, [location])
 
     return (
         <>
@@ -53,7 +58,7 @@ function MovieCategory() {
                 {movies && movies.map( (movie, i) => {
                     const lastElement = movies.length === i + 1;
 
-                    return <MovieCard key={movie.id} movie={movie} observer={observer} lastElement={lastElement} />
+                    return <MovieCard key={`${prettyUrl(location.state.name)}-${movie.id}`} movie={movie} observer={observer} lastElement={lastElement} />
                 })}
 
                 {loading && <Loading/>}
