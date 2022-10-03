@@ -17,6 +17,11 @@ function SingleMovie() {
             })
     }, [movieParams]);
 
+    const formatter = new Intl.NumberFormat('us', {
+        style: "currency",
+        currency: "USD"
+    });
+
     return (
         <>
 
@@ -40,10 +45,21 @@ function SingleMovie() {
                                     <p>{movie?.vote_average.toFixed(1)}</p>
                                     <h3>Release Date:</h3>
                                     <p>{movie?.release_date}</p>
-                                    <h3>Budget:</h3>
-                                    <p>{movie?.budget}</p>
-                                    <h3>Revenue:</h3>
-                                    <p>{movie?.revenue}</p>
+
+                                    {movie.budget > 0 && (
+                                        <>
+                                            <h3>Budget:</h3>
+                                            <p>{formatter.format(movie.budget)}</p>
+                                        </>
+                                    )}
+                                    
+                                    {movie.revenue > 0 && (
+                                        <>
+                                            <h3>Revenue:</h3>
+                                            <p>{formatter.format(movie.revenue)}</p>
+                                        </>
+                                    )}
+                                    
                                     <h3>Website:</h3>
                                     <p><a href={movie?.homepage} target="_blank" rel="noreferrer">{movie?.homepage}</a></p>
                                     <h3>Production Companies:</h3>
@@ -57,7 +73,7 @@ function SingleMovie() {
                                     <h3>Categories:</h3>
                                     <div className="categories">
                                         {movie?.genres.map(genre => (
-                                            <Link key={genre.name} to={`/movie-category/${prettyUrl(genre.name)}`} state={{id: genre.id}}>
+                                            <Link key={genre.name} to={`/movie-category/${prettyUrl(genre.name)}`} state={{id: genre.id, name:genre.name}}>
                                                 {genre.name}
                                             </Link>
                                         ))}

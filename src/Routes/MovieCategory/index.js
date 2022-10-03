@@ -18,7 +18,7 @@ function MovieCategory() {
         
             if (card.isIntersecting) {
                 const source = card.target.getAttribute('data-image');
-                card.target.style.backgroundImage = `url(${source})`;
+                card.target.style.backgroundImage = `url(${source}), url('https://via.placeholder.com/200x300?text=Missing Image')`;
 
                 if ( card.target.dataset.lastElement === 'true' ) {
                     setPageNum(prev => prev + 1);
@@ -27,6 +27,11 @@ function MovieCategory() {
             }
         });
     });
+
+    React.useEffect(() => {
+        setMovies([]);
+        setPageNum(1)
+    }, [location])
 
     React.useEffect(() => {
         api('/discover/movie', {
@@ -41,12 +46,7 @@ function MovieCategory() {
                     return [...loadedMovies, ...res.data.results]
                 });
             })
-    }, [pageNumber, location]);
-
-    React.useEffect(() => {
-        setMovies([]);
-        setPageNum(1)
-    }, [location])
+    }, [pageNumber]);
 
     return (
         <>
