@@ -66,11 +66,9 @@ function SingleMovie(props) {
                                     <p><a href={movie?.homepage} target="_blank" rel="noreferrer">{movie?.homepage}</a></p>
                                     <h3>Production Companies:</h3>
                                     <div className="logos">
-                                        {movie?.production_companies.map(company => {
-                                            if (company.logo_path) {
-                                                return <img key={company.logo_path} src={`https://image.tmdb.org/t/p/w500${company.logo_path}`} alt={company.name}/>
-                                            }
-                                        })}
+                                        {movie?.production_companies.map(company => (
+                                            <img key={company.logo_path} src={`https://image.tmdb.org/t/p/w500${company.logo_path}`} alt={company.name}/>
+                                        ))}
                                     </div>
                                     <h3>Categories:</h3>
                                     <div className="categories">

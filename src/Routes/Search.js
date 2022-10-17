@@ -35,7 +35,7 @@ function Search(props) {
                 return [...loadedMovies, ...res.data.results]
             })
         })
-    }, [pageNum]);
+    }, [pageNum, searchParams]);
 
     return(
         <>

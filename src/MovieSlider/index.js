@@ -13,7 +13,7 @@ function MovieSlider(props) {
             .then(res => {
                 setMovies(res.data.results);
             })
-    }, [])
+    }, [props.endPoint])
 
     return (
         <>
@@ -25,7 +25,7 @@ function MovieSlider(props) {
                     <Link to={`movie/${prettyUrl(movie.original_title)}`} state={{ id: movie.id,name: movie.original_title}}>
                         <div className="wrapper">
                             <div className="image">
-                                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+                                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} />
                                 <div className="overlay"></div>
                             </div>
                             

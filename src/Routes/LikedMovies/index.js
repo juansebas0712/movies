@@ -1,11 +1,9 @@
 import React from "react";
 import { Header} from "../../Header";
 import { MovieCard } from "../../MovieCard";
-import { prettyUrl, api } from "../../MovieContext";
-import { useLocation } from "react-router-dom";
+import { api } from "../../MovieContext";
 
 function LikedMovies(props) {
-    let location = useLocation();
     const [movies, setMovies] = React.useState([]);
 
     let observer = new IntersectionObserver(el => {

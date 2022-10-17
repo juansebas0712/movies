@@ -46,7 +46,7 @@ function MovieCategory(props) {
                     return [...loadedMovies, ...res.data.results]
                 });
             })
-    }, [pageNumber]);
+    }, [pageNumber, location.state.id]);
 
     return (
         <>
