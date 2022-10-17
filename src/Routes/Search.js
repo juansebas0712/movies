@@ -4,7 +4,7 @@ import { Header } from "../Header";
 import { MovieCard } from "../MovieCard";
 import { api } from "../MovieContext";
 
-function Search() {
+function Search(props) {
     const [searchResults, setSearchResults] = React.useState([]);
     const [pageNum, setPageNum] = React.useState(1);
     let [searchParams] = useSearchParams();
@@ -39,7 +39,7 @@ function Search() {
 
     return(
         <>
-            <Header />
+            <Header {...props} />
             <section className="movies-section movies-category">
                 <h2 className="section-title">
                     {searchParams.get('query') && (`Search Results for: ${searchParams.get('query')}`)}
@@ -52,7 +52,7 @@ function Search() {
                 {searchResults && searchResults.map((movie, i) => {
                     const lastElement = searchResults.length === i + 1;
 
-                    return <MovieCard key={movie.id} movie={movie} observer={observer} lastElement={lastElement} />
+                    return <MovieCard key={movie.id} movie={movie} observer={observer} lastElement={lastElement} likedMovies={props.likedMovies} setLikedMovies={props.setLikedMovies} />
                 })}
             </section>
         </>

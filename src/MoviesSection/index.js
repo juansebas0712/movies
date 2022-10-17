@@ -7,7 +7,7 @@ function MoviesSection(props) {
         <>
             <section className="movies-section">
                 <h2 className="movies-section-title">{props.sectionTitle}</h2>
-                <MovieList endPoint={props.endPoint} />
+                <MovieList endPoint={props.endPoint} {...props} />
             </section>
         </>
     );

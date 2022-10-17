@@ -3,10 +3,11 @@ import { Header } from "../../Header";
 import { api, prettyUrl } from "../../MovieContext";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { MovieLikeBtn } from "../../MovieLikeBtn";
 
 import "./SingleMovie.scss";
 
-function SingleMovie() {
+function SingleMovie(props) {
     const [movie, setMovie] = React.useState(null);
     const movieParams = useLocation()
 
@@ -29,11 +30,12 @@ function SingleMovie() {
 
             {movie && (
                 <>
-                    <Header />
+                    <Header {...props} />
                     <section className="single-movie movies-section">
                         <div className="wrapper">
                             <div className="left">
                                 <img src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`} alt={movie.original_title}/>
+                                <MovieLikeBtn movieId={movie.id} likedMovies={props.likedMovies} setLikedMovies={props.setLikedMovies}/>
                             </div>
                             <div className="center">
                                 <h1>{movie?.original_title}</h1>

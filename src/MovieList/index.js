@@ -42,7 +42,7 @@ function MovieList(props) {
                 {movies.map( (movie, i) => {
                         const isLastElement = movies.length === i + 1;
 
-                        return <MovieCard key={movie.id} movie={movie} observer={observer} lastElement={isLastElement} />                        
+                        return <MovieCard key={movie.id} movie={movie} observer={observer} lastElement={isLastElement} likedMovies={props.likedMovies} setLikedMovies={props.setLikedMovies} />                        
                     }
                 )}
             </div>

@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { prettyUrl } from "../MovieContext";
+import { MovieLikeBtn } from "../MovieLikeBtn";
 import "./MovieCard.scss";
 
-function MovieCard({movie, observer, lastElement}) {
+function MovieCard({movie, observer, lastElement, likedMovies, setLikedMovies}) {
     const {poster_path, original_title, overview, vote_average, id} = movie;
     const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
     const card = useRef(null);
@@ -15,6 +16,7 @@ function MovieCard({movie, observer, lastElement}) {
     return (
         <>
             <div className="movieCard" data-image={poster} ref={card} data-last-element={lastElement}>
+                <MovieLikeBtn movieId={id} likedMovies={likedMovies} setLikedMovies={setLikedMovies} />
                 <Link to={`/movie/${prettyUrl(original_title)}`} state={{
                         id: id,
                         name: original_title

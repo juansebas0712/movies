@@ -7,7 +7,7 @@ import { Loading } from "../../Loading";
 
 import "./MovieCategory.scss";
 
-function MovieCategory() {
+function MovieCategory(props) {
     let location = useLocation();
     const [movies, setMovies] = React.useState([]);
     const [pageNumber, setPageNum] = React.useState(1);
@@ -50,7 +50,7 @@ function MovieCategory() {
 
     return (
         <>
-            <Header />
+            <Header {...props} />
             <section className="movies-section movies-category">
                 
                 <h2 className="section-title">Category: {location.state.name}</h2>
@@ -58,7 +58,7 @@ function MovieCategory() {
                 {movies && movies.map( (movie, i) => {
                     const lastElement = movies.length === i + 1;
 
-                    return <MovieCard key={`${prettyUrl(location.state.name)}-${movie.id}`} movie={movie} observer={observer} lastElement={lastElement} />
+                    return <MovieCard key={`${prettyUrl(location.state.name)}-${movie.id}`} movie={movie} observer={observer} lastElement={lastElement} likedMovies={props.likedMovies} setLikedMovies={props.setLikedMovies} />
                 })}
 
                 {loading && <Loading/>}
