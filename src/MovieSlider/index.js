@@ -45,7 +45,7 @@ function MovieSlider(props) {
                                 </p>
                             </div>
                             <div className="bottom">
-                                <CallToAction url={'#'} />
+                                <CallToAction text={`View More`} url={'#'} />
                             </div>
                         </div>
                     </Link>

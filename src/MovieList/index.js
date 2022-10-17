@@ -32,7 +32,7 @@ function MovieList(props) {
             }
         })
             .then(response => setMovies((loadedMovies) => [...loadedMovies, ...response.data.results] ));
-    }, [pageNumber]);
+    }, [pageNumber, props.endPoint]);
 
     if (!movies) return "No post!";
 

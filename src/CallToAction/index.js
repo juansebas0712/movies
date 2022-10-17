@@ -8,7 +8,7 @@ function CallToAction(props) {
             <a href={props.url} className="cta">
                 <div className="cta__wrapper">
                     <span className="text">
-                        {props.text && props.text || 'View More'}
+                        {props.text && props.text}
                     </span>
                     <span className="icon">
                         <ArrowRight />

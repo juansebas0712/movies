@@ -11,7 +11,7 @@ function MovieCard({movie, observer, lastElement, likedMovies, setLikedMovies}) 
 
     React.useEffect(() => {
         observer.observe(card.current);
-    }, [])
+    }, [observer])
     
     return (
         <>

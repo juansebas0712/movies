@@ -12,6 +12,7 @@
     border: 2px solid $main-color;
     cursor: pointer;
     text-align: center;
+    z-index: 9;
 
     &:hover {
         background: rgba(0, 0, 0, 1);

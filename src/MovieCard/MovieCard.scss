@@ -43,17 +43,19 @@
         }
     }
 
-    &:hover {
-        width: 400px;
-        z-index: 2;
-
-        .fade {
-            opacity: 1;
-        }
-
-        .movie-content {
-            transform: scale(1);
-            opacity: 1;
+    @media (min-width: $phone) {
+        &:hover {
+            width: 400px;
+            z-index: 2;
+    
+            .fade {
+                opacity: 1;
+            }
+    
+            .movie-content {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     }
 }
