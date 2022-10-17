@@ -17,7 +17,7 @@ function App() {
   const [likedMovies, setLikedMovies] = useLocalStorage('likedMovies', []);
 
   return (
-    <BrowserRouter basename='/movies'>
+    <BrowserRouter basename='/'>
       <Routes>
         <Route path="/" element={<Homepage likedMovies={likedMovies} setLikedMovies={setLikedMovies} />}></Route>
         <Route path="movie-category/:id" element={<MovieCategory likedMovies={likedMovies} setLikedMovies={setLikedMovies} />}></Route>
